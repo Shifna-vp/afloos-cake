@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Afloos Cake</title>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #fff8f5;
+      color: #333;
+    }
+    header {
+      background-color: #ffb6c1;
+      text-align: center;
+      padding: 20px;
+    }
+    header h1 {
+      margin: 0;
+      font-size: 2rem;
+      color: #fff;
+    }
+    header p {
+      color: #fff;
+      margin-top: 5px;
+    }
+    nav {
+      background: #ff89a9;
+      padding: 10px;
+      text-align: center;
+    }
+    nav a {
+      text-decoration: none;
+      color: #fff;
+      margin: 0 12px;
+      font-weight: bold;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    .hero {
+      text-align: center;
+      padding: 40px 20px;
+      background: url('https://images.unsplash.com/photo-1603079848871-f4f46e3a2a7d') no-repeat center/cover;
+      color: white;
+    }
+    .hero h2 {
+      font-size: 1.8rem;
+      background: rgba(0,0,0,0.5);
+      display: inline-block;
+      padding: 10px 20px;
+      border-radius: 10px;
+    }
+
+    /* Category buttons */
+    .category-buttons {
+      text-align: center;
+      padding: 20px;
+    }
+    .category-buttons button {
+      background: #ff5c8d;
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      margin: 5px;
+      border-radius: 6px;
+      cursor: pointer;
+      font-weight: bold;
+    }
+    .category-buttons button:hover {
+      background: #ff3f75;
+    }
+
+    .cakes-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      padding: 20px;
+    }
+    .cake {
+      flex: 1 1 250px;
+      max-width: 280px;
+      margin: 15px;
+      padding: 20px;
+      border: 1px solid #ddd;
+      border-radius: 15px;
+      background: #fff;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+      display: none; /* hidden by default, JS shows matching category */
+    }
+    .cake img {
+      width: 100%;
+      border-radius: 10px;
+    }
+    .cake h3 {
+      margin-top: 10px;
+    }
+    .price {
+      font-weight: bold;
+      margin: 5px 0;
+      color: #ff5c8d;
+    }
+    .order-btn {
+      display: inline-block;
+      background: #25D366;
+      color: #fff;
+      padding: 8px 12px;
+      border-radius: 6px;
+      text-decoration: none;
+      font-weight: bold;
+    }
+    .order-btn:hover {
+      background: #1ebe57;
+    }
+    section {
+      text-align: center;
+      padding: 40px 20px;
+    }
+    footer {
+      text-align: center;
+      padding: 20px;
+      background: #ff89a9;
+      color: white;
+      margin-top: 30px;
+    }
+    @media (max-width: 600px) {
+      header h1 {
+        font-size: 1.6rem;
+      }
+      .hero h2 {
+        font-size: 1.3rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Afloos Cake 🍰</h1>
+    <p>Homemade Happiness in Every Bite</p>
+  </header>
+
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#menu">Menu</a>
+    <a href="#about">About</a>
+    <a href="#contact">Contact</a>
+  </nav>
+
+  <section class="hero" id="home">
+    <h2>Delicious Cakes Made with Love ❤️</h2>
+  </section>
+
+  <!-- CATEGORY BUTTONS -->
+  <div class="category-buttons" id="menu">
+    <button onclick="filterCakes('all')">All Cakes</button>
+    <button onclick="filterCakes('birthday')">Birthday Cakes</button>
+    <button onclick="filterCakes('wedding')">Wedding Cakes</button>
+    <button onclick="filterCakes('cupcake')">Cupcakes</button>
+<button onclick="filterCakes('browniepops')">Brownie & Popsicles</button>
+  </div>
+  <!-- CAKES -->
+  <div class="cakes-container">
+    <!-- Birthday Cakes -->
+    <div class="cake birthday">
+      <img src="choco.jpg" alt="Chocolate Cake">
+      <h3>Chocolate Birthday Cake</h3>
+      <p class="price">₹800</p>
+      <a class="order-btn" href="https://wa.me/919747840603?text=I%20want%20Chocolate%20Birthday%20Cake" target="_blank">Order via WhatsApp</a>
+    </div>
+
+    <div class="cake birthday">
+      <img src="str.jpg" alt="Strawberry Cake">
+      <h3>Strawberry Birthday Cake</h3>
+      <p class="price">₹700</p>
+      <a class="order-btn" href="https://wa.me/919747840603?text=I%20want%20Strawberry%20Birthday%20Cake" target="_blank">Order via WhatsApp</a>
+    </div>
+
+    <!-- Wedding Cakes -->
+    <div class="cake wedding">
+      <img src="red.jpg" alt="Red Velvet Cake">
+      <h3>Red Velvet Wedding Cake</h3>
+      <p class="price">₹750</p>
+      <a class="order-btn" href="https://wa.me/919747840603?text=I%20want%20Red%20Velvet%20Wedding%20Cake" target="_blank">Order via WhatsApp</a>
+    </div>
+
+    <div class="cake wedding">
+      <img src="black.jpg" alt="Black Forest Cake">
+      <h3>Black Forest Wedding Cake</h3>
+      <p class="price">₹600</p>
+      <a class="order-btn" href="https://wa.me/919747840603?text=I%20want%20Black%20Forest%20Wedding%20Cake" target="_blank">Order via WhatsApp</a>
+    </div>
+
+    <!-- Cupcakes -->
+    <div class="cake cupcake">
+      <img src="picup.jpg" alt="Pineapple Cupcake">
+      <h3>Pineapple Cupcake</h3>
+      <p class="price">₹80</p>
+      <a class="order-btn" href="https://wa.me/919747840603?text=I%20want%20Pineapple%20Cupcake" target="_blank">Order via WhatsApp</a>
+    </div>
+
+    <div class="cake cupcake">
+      <img src="chocup.jpg" alt="Chocolate Cupcake">
+      <h3>Chocolate Cupcake</h3>
+      <p class="price">₹90</p>
+      <a class="order-btn" href="https://wa.me/919747840603?text=I%20want%20Chocolate%20Cupcake" target="_blank">Order via WhatsApp</a>
+    </div>
+<!-- Brownie & Popsicles -->
+<div class="cake browniepops">
+  <img src="brown.jpg" alt="Chocolate Brownie">
+  <h3>Chocolate Brownie</h3>
+  <p class="price">₹80</p>
+  <a class="order-btn" href="https://wa.me/919747840603?text=I%20want%20Chocolate%20Brownie" target="_blank">Order via WhatsApp</a>
+</div>
+
+<div class="cake browniepops">
+  <img src="pop.jpg" alt=" Popsicles">
+  <h3> Popsicle</h3>
+  <p class="price">₹50</p>
+  <a class="order-btn" href="https://wa.me/919747840603?text=I%20want%20Fruit%20Popsicle" target="_blank">Order via WhatsApp</a>
+</div>
+<div class="cake browniepops">
+  <img src="cake.jpg" alt="cakesicles">
+  <h3>cakesicles</h3>
+  <p class="price">₹60</p>
+  <a class="order-btn" href="https://wa.me/919747840603?text=I%20want%20Chocolate%20Brownie" target="_blank">Order via WhatsApp</a>
+</div>
+<section id="custom">
+  <h2>Customise Your Cake</h2>
+  <p>Tell us exactly how you’d like your cake and we’ll make it special! 🎂</p>
+  
+  <form action="https://formspree.io/f/yourformid" method="POST" style="max-width:500px;margin:auto;text-align:left;">
+    <label for="name">Your Name:</label><br>
+    <input type="text" id="name" name="name" required style="width:100%;padding:8px;"><br><br>
+
+    <label for="phone">Phone Number:</label><br>
+    <input type="text" id="phone" name="phone" required style="width:100%;padding:8px;"><br><br>
+
+    <label for="cakeType">Cake Type:</label><br>
+    <select id="cakeType" name="cakeType" style="width:100%;padding:8px;">
+      <option>Chocolate</option>
+      <option>Vanilla</option>
+      <option>Red Velvet</option>
+      <option>Black Forest</option>
+      <option>Pineapple</option>
+      <option>white forest</option>
+      <option>nutty bubble</option>
+      <option>butterscotch</option>
+      <option>tender coconut</option>
+      <option>vancho</option>
+      <option>milky nut</option>
+     <option>Custom Flavour</option>
+    </select><br><br>
+
+    <label for="size">Size (Kg):</label><br>
+    <input type="text" id="size" name="size" placeholder="e.g. 1 kg" style="width:100%;padding:8px;"><br><br>
+
+    <label for="message">Message on Cake:</label><br>
+    <input type="text" id="message" name="message" placeholder="e.g. Happy Birthday!" style="width:100%;padding:8px;"><br><br>
+
+    <label for="deliveryDate">Delivery Date:</label><br>
+    <input type="date" id="deliveryDate" name="deliveryDate" style="width:100%;padding:8px;"><br><br>
+
+    <label for="notes">Any Special Instructions:</label><br>
+    <textarea id="notes" name="notes" rows="4" style="width:100%;padding:8px;"></textarea><br><br>
+
+    <button type="submit" style="background:#ff5c8d;color:white;padding:10px 15px;border:none;border-radius:6px;">Submit Custom Order</button>
+  </form>
+</section>
+<section id="about">
+    <h2>About Us</h2>
+    <p>Afloos Cake is a home-based bakery bringing you freshly baked cakes made with love and passion. Every cake tells a story — and we’d love to be a part of yours!</p>
+  </section>
+
+  <section id="contact">
+    <h2>Contact Us</h2>
+    <p>📞 +91 9747840603</p>
+    <p>📧 aflooscake@gmail.com</p>
+    <p>📍 Calicut, Kerala</p>
+    <a class="order-btn" href="https://wa.me/919747840603?text=Hi%20I%20want%20to%20place%20a%20cake%20order" target="_blank">Chat on WhatsApp</a>
+  </section>
+
+  <footer>
+    <p>© 2025 Afloos Cake. All rights reserved.</p>
+  </footer>
+
+  <script>
+    // Filter function
+    function filterCakes(category) {
+      const cakes = document.querySelectorAll('.cake');
+      cakes.forEach(cake => {
+        if (category === 'all') {
+          cake.style.display = 'block';
+        } else if (cake.classList.contains(category)) {
+          cake.style.display = 'block';
+        } else {
+          cake.style.display = 'none';
+        }
+      });
+    }
+    // Show all by default
+    filterCakes('all');
+  </script>
+</body>
+</html>
